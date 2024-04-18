@@ -11,7 +11,7 @@ import java.util.List;
 public class CategoryDto implements Serializable {
 
 
-    @Serial
+    //@Serial
     private static final long serialVersionUID = 1L;
 
     private Integer id;

@@ -4,33 +4,155 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dfc590c-dfb1-4665-949f-d6f818fa40cf" name="Changes" comment="" />
+    <list default="true" id="7dfc590c-dfb1-4665-949f-d6f818fa40cf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/configuration/JpaPersistence.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/configuration/SpringMvcConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/configuration/WebAppInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/CategoryControler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ErrorControler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ProductControler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ProductImageControler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/converter/TempConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/CartDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/CartItemDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/CategoryDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/CustomerDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/ProductDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/ProductImageDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/RoleDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/ShippingAddressDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/CartEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/CartItemEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/CategoryEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/CustomerEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/ProductEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/ProductImageEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/RoleEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/ShippingAddressEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/UserEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/exceptions/DataNotValidatedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/exceptions/DuplicateNotAllowed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/exceptions/FileUploadException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/exceptions/InstanceUndefinedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/CartItemRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/CartRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/CategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/ProductImageRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/ShippingAddressRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/CartItemService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/CartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/ProductImageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/ProductsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/ShippingAddressService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/ProductImageServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/utils/FileValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/utils/RegistrationForm.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2edl9Rf66WkXk0VTPrB8KPxARt8" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Smart Tomcat.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Niks/IdeaProjects/productMenagement&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Niks\IdeaProjects\productMenagement3\src\main\java\com\nikola\spring" />
+      <recent name="C:\Users\Niks\IdeaProjects\productMenagement3\src\main\java\com\nikola\spring\dto" />
+      <recent name="C:\Users\Niks\IdeaProjects\productMenagement3\src\main\java\com\nikola\spring\configuration\configuration" />
+      <recent name="C:\Users\Niks\IdeaProjects\productMenagement3\src\main\java\com\nikola\spring\configuration" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="com.poratu.idea.plugins.tomcat" nameIsGenerated="true">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="catalinaBase" value="C:\Users\Niks\.SmartTomcat\productMenagement3\productMenagement3" />
+      <option name="contextPath" value="/" />
+      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="extraClassPath" value="" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/10.1.20" />
+          <option name="path" value="$USER_HOME$/Downloads/apache-tomcat-10.1.20/apache-tomcat-10.1.20" />
+          <option name="version" value="10.1.20.0" />
+        </TomcatInfo>
+      </option>
+      <option name="vmOptions" value="" />
+      <module name="productMenagement3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

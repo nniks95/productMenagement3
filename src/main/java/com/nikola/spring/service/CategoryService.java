@@ -1,10 +1,10 @@
-package com.nikola.spring.service.impl;
+package com.nikola.spring.service;
 
 import com.nikola.spring.dto.CategoryDto;
 
 import java.util.List;
 
-public interface CategoryService {
+public interface    CategoryService {
 
     CategoryDto addCategory(CategoryDto categoryDto);
 
@@ -12,7 +12,7 @@ public interface CategoryService {
 
     CategoryDto getCategoryById(Integer categoryId);
 
-    CategoryDto updateCategoryById(Integer categoryId);
+    CategoryDto updateCategoryById(Integer categoryId, CategoryDto categoryDto);
 
     void deleteCategory(Integer categoryId);
 

@@ -1,4 +1,4 @@
-package com.nikola.spring.configuration.configuration;
+package com.nikola.spring.configuration;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;

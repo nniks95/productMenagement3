@@ -12,16 +12,15 @@ import java.util.List;
 @Table(name = "category")
 public class CategoryEntity implements Serializable {
 
-    @Serial
+   // @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(length = 40, nullable = false)
+    @Column(length = 40, nullable = false, unique = true)
     private String name;
     @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "category")
-
     private List<ProductEntity> products;
 
 

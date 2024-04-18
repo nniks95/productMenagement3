@@ -1,2 +1,9 @@
-package com.nikola.spring.repositories;public interface CartRepository {
+package com.nikola.spring.repositories;
+
+import com.nikola.spring.entities.CartEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CartRepository extends JpaRepository<CartEntity,Integer> {
 }

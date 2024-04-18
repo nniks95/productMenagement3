@@ -16,7 +16,7 @@ public class ProductDto implements Serializable {
     private Integer id;
     @NotEmpty
     @Size(min = 3 , max = 40)
-    private String brend;
+    private String brand;
     @NotEmpty
     @Size(min = 3 , max = 40)
     private String model;
@@ -29,7 +29,6 @@ public class ProductDto implements Serializable {
     private String createTime;
     private String updateTime;
 
-
     public Integer getId() {
         return id;
     }
@@ -38,12 +37,12 @@ public class ProductDto implements Serializable {
         this.id = id;
     }
 
-    public String getBrend() {
-        return brend;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setBrend(String brend) {
-        this.brend = brend;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getModel() {
@@ -84,5 +83,18 @@ public class ProductDto implements Serializable {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductDto{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", price=" + price +
+                ", categoryId=" + categoryId +
+                ", createTime='" + createTime + '\'' +
+                ", updateTime='" + updateTime + '\'' +
+                '}';
     }
 }
