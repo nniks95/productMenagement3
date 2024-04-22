@@ -322,6 +322,32 @@ public class TempConverter {
         return returnValue;
     }
 
+    public CartItemDto entityToDto(CartItemEntity cartItemEntity){
+        CartItemDto returnValue = mapper.map(cartItemEntity, CartItemDto.class);
+        Optional<CartEntity> cartEntityOptional = Optional.ofNullable(cartItemEntity.getCart());
+        if(cartEntityOptional.isPresent()){
+            returnValue.setCart_id(cartEntityOptional.get().getId());
+        }
+        Optional<ProductEntity> productEntityOptional = Optional.ofNullable(cartItemEntity.getProduct());
+        if(productEntityOptional.isPresent()){
+            returnValue.setProduct_id(productEntityOptional.get().getId());
+        }
+        return returnValue;
+    }
+    public CartItemEntity dtoToEntity(CartItemDto cartItemDto){
+        CartItemEntity returnValue = mapper.map(cartItemDto,CartItemEntity.class);
+        Optional<Integer> cartIdOptional = Optional.ofNullable(cartItemDto.getCart_id());
+        if (cartIdOptional.isPresent()){
+            Integer cartId = cartItemDto.getCart_id();
+            returnValue.setCart(cartRepository.findById(cartId).orElse(null));
+        }
+        Optional<Integer> productIdOptional = Optional.ofNullable(cartItemDto.getProduct_id());
+        if(productIdOptional.isPresent()){
+            returnValue.setProduct(productRepository.findById(productIdOptional.get()).orElse(null));
+        }
+        return returnValue;
+    }
+
 
 
 

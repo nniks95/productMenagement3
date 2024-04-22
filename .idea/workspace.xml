@@ -5,64 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dfc590c-dfb1-4665-949f-d6f818fa40cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/configuration/JpaPersistence.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/configuration/SpringMvcConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/configuration/WebAppInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/CategoryControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ErrorControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ProductControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ProductImageControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/converter/TempConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/CartDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/CartItemDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/CategoryDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/CustomerDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/ProductDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/ProductImageDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/RoleDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/ShippingAddressDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/CartEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/CartItemEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/CategoryEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/CustomerEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/ProductEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/ProductImageEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/RoleEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/ShippingAddressEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/UserEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/exceptions/DataNotValidatedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/exceptions/DuplicateNotAllowed.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/exceptions/FileUploadException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/exceptions/InstanceUndefinedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/CartItemRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/CartRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/CustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/ProductImageRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/RoleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/ShippingAddressRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/CartItemService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/CartService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/CustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/ProductImageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/ProductsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/ShippingAddressService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/ProductImageServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/utils/FileValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/utils/RegistrationForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/CartItemServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/CartServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/CustomerServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/ShippingAddressServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/converter/TempConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/converter/TempConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/UserRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
