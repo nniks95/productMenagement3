@@ -30,7 +30,7 @@ public class CartItemServiceImpl implements CartItemService {
     @Override
     public List<CartItemDto> listAllItemsByCartId(Integer cartId) {
         List<CartItemDto> returnValue = new ArrayList<>();
-        List<CartItemEntity> allCartItems = cartItemRepository.findAll();
+        List<CartItemEntity> allCartItems = cartItemRepository.findAllByCartId(cartId);
         for(CartItemEntity cartItem:allCartItems){
             returnValue.add(tempConverter.entityToDto(cartItem));
         }
@@ -42,16 +42,18 @@ public class CartItemServiceImpl implements CartItemService {
         CartItemDto cartItemDto = getCartItemById(itemId);
         cartItemRepository.delete(tempConverter.dtoToEntity(cartItemDto));
         cartItemRepository.flush();
-
     }
 
     @Override
     public void removeAllByProductId(Integer productId) {
-
+        cartItemRepository.deleteAllByProductId(productId);
+        cartItemRepository.flush();
     }
 
     @Override
     public void removeAllByCartId(Integer cartId) {
+        cartItemRepository.deleteAllByCartId(cartId);
+        cartItemRepository.flush();
 
     }
 

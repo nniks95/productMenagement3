@@ -46,7 +46,6 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
     public ShippingAddressDto updateAddress(ShippingAddressDto shippingAddress) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUsername = authentication.getName();
-
         ShippingAddressDto returnValue = null;
         Optional<CustomerEntity> customerOptional = customerRepository.findByUserName(currentUsername);
         if(customerOptional.isPresent()){
@@ -58,7 +57,6 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
             if(currentShippingAddress == null){
                 throw new RuntimeException("Shipping address not found for the customer");
             }
-
             currentShippingAddress.setAddress(shippingAddress.getAddress());
             currentShippingAddress.setCity(shippingAddress.getCity());
             currentShippingAddress.setCountry(shippingAddress.getCountry());

@@ -28,7 +28,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> listAllUsers() {
-
         List<UserDto> returnValue = new ArrayList<>();
         List<UserEntity> allUsers = userRepository.findAll();
         for(UserEntity user:allUsers){
@@ -40,7 +39,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUserById(Integer userId) {
         UserDto returnValue = null;
-
         Optional<UserEntity> userEntityOptional = userRepository.findById(userId);
         if(userEntityOptional.isPresent()){
             returnValue = tempConverter.entityToDto(userEntityOptional.get());
@@ -55,13 +53,11 @@ public class UserServiceImpl implements UserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUser = authentication.getName();
         UserDto returnValue = null;
-
         Optional<UserEntity> userEntityOptional = userRepository.findUserByName(currentUser);
         if(userEntityOptional.isPresent()){
             if(userEntityOptional == null){
                 throw new RuntimeException("User not found");
             }
-
             UserEntity currentUserEntity = userEntityOptional.get();
             returnValue = tempConverter.entityToDto(currentUserEntity);
         }
@@ -70,18 +66,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void suspendUser(Integer userId) {
-
+        UserDto user = getUserById(userId);
+        user.setEnabled((short)0);
+        userRepository.saveAndFlush(tempConverter.dtoToEntity(user));
     }
 
     @Override
     public void reactivateUser(Integer userId) {
-
+        UserDto user = getUserById(userId);
+        user.setEnabled((short)1);
+        userRepository.saveAndFlush(tempConverter.dtoToEntity(user));
     }
 
     @Override
     public UserDto updateUserInfo(UserDto user) {
         UserDto returnValue = getCurrentUser();
-
         returnValue.setEmail(user.getEmail());
         returnValue.setPassword(user.getPassword());
         return returnValue;
