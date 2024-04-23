@@ -21,6 +21,13 @@ public class RoleEntity implements Serializable, GrantedAuthority {
     @Transient
     private List<UserEntity> users;
 
+    public RoleEntity(String role) {
+        this.role = role;
+    }
+    public RoleEntity(){
+
+    }
+
     @Override
     public String getAuthority() {
         return role;

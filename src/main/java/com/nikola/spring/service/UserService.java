@@ -18,6 +18,8 @@ public interface UserService {
 
     UserDto updateUserInfo(UserDto user);
 
+    UserDto getUserByEmail(String email);
+
 
 
 

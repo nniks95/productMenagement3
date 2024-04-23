@@ -32,6 +32,17 @@ public class UserEntity implements Serializable, UserDetails {
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<RoleEntity> roles;
 
+    public UserEntity(String firstName, String lastName, String email, String password, Byte enabled) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.enabled = enabled;
+    }
+    public UserEntity(){
+
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;

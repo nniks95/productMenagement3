@@ -85,4 +85,14 @@ public class UserServiceImpl implements UserService {
         returnValue.setPassword(user.getPassword());
         return returnValue;
     }
+
+    @Override
+    public UserDto getUserByEmail(String email) {
+        UserDto returnValue = null;
+        Optional<UserEntity> userOptional = userRepository.findByEmail(email);
+        if(userOptional.isPresent()){
+            returnValue = tempConverter.entityToDto(userOptional.get());
+        }
+        return  returnValue;
+    }
 }
