@@ -7,6 +7,7 @@ import com.nikola.spring.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,6 @@ public class LoadData {
 
     @Autowired
     public void injectAll(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder){
-        System.out.println("inject");
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
@@ -37,12 +37,13 @@ public class LoadData {
             UserEntity userEntity = new UserEntity("Nikola","Nikolic","nikola.nikolic.it@gmail.com", "nikola123",(byte)1);
             userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
             userEntity.setRoles(roles);
+
             try{
                 UserEntity storedUser = userRepository.save(userEntity);
                 role.setUsers(List.of(storedUser));
                 roleRepository.saveAndFlush(role);
             }catch (Exception e){
-                System.err.println("Admin already added");
+                System.err.println("Admin already added!!!");
             }
         }else{
             System.err.println("Admin already added");
@@ -51,7 +52,6 @@ public class LoadData {
     }
 
     public void addRolesData(){
-        System.out.println("Pravim role");
         RoleEntity role1 = new RoleEntity("ADMIN");
         RoleEntity role2 = new RoleEntity("USER");
         if(roleRepository.findByRole("ADMIN").isEmpty()){
@@ -61,9 +61,4 @@ public class LoadData {
             roleRepository.save(role2);
         }
     }
-
-
-
-
-
 }

@@ -25,7 +25,7 @@ public class UserEntity implements Serializable, UserDetails {
     private String lastName;
     @Column(length = 40, nullable = false, unique = true)
     private String email;
-    @Column(length = 40, nullable = false)
+    @Column(nullable = false)
     private String password;
     private Byte enabled;
     @ManyToMany(fetch = FetchType.EAGER)

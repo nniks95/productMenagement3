@@ -44,27 +44,32 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
 
     @Override
     public ShippingAddressDto updateAddress(ShippingAddressDto shippingAddress) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentUsername = authentication.getName();
-        ShippingAddressDto returnValue = null;
-        Optional<CustomerEntity> customerOptional = customerRepository.findByUserName(currentUsername);
-        if(customerOptional.isPresent()){
-            if(currentUsername == null){
-                throw new RuntimeException("User not found");
-            }
-
-            ShippingAddressEntity currentShippingAddress = customerOptional.get().getShippingAddress();
-            if(currentShippingAddress == null){
-                throw new RuntimeException("Shipping address not found for the customer");
-            }
-            currentShippingAddress.setAddress(shippingAddress.getAddress());
-            currentShippingAddress.setCity(shippingAddress.getCity());
-            currentShippingAddress.setCountry(shippingAddress.getCountry());
-            currentShippingAddress.setPostCode(shippingAddress.getPostCode());
-            currentShippingAddress.setState(shippingAddress.getState());
-
-            returnValue = tempConverter.entityToDto(currentShippingAddress);
-        }
-        return returnValue;
+        return null;
     }
+
+//    @Override
+//    public ShippingAddressDto updateAddress(ShippingAddressDto shippingAddress) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String currentUsername = authentication.getName();
+//        ShippingAddressDto returnValue = null;
+//        Optional<CustomerEntity> customerOptional = customerRepository.findByUserName(currentUsername);
+//        if(customerOptional.isPresent()){
+//            if(currentUsername == null){
+//                throw new RuntimeException("User not found");
+//            }
+//
+//            ShippingAddressEntity currentShippingAddress = customerOptional.get().getShippingAddress();
+//            if(currentShippingAddress == null){
+//                throw new RuntimeException("Shipping address not found for the customer");
+//            }
+//            currentShippingAddress.setAddress(shippingAddress.getAddress());
+//            currentShippingAddress.setCity(shippingAddress.getCity());
+//            currentShippingAddress.setCountry(shippingAddress.getCountry());
+//            currentShippingAddress.setPostCode(shippingAddress.getPostCode());
+//            currentShippingAddress.setState(shippingAddress.getState());
+//
+//            returnValue = tempConverter.entityToDto(currentShippingAddress);
+//        }
+//        return returnValue;
+//    }
 }

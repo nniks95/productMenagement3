@@ -17,8 +17,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity
-@EnableMethodSecurity
+@EnableWebSecurity()
+@EnableMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfiguration {
 
     @Autowired private JwtRequestFilter requestFilter;

@@ -34,7 +34,6 @@ public class ShippingAddressDto implements Serializable {
     @NotEmpty
     @Size(min = 3 , max = 40)
     private String country;
-    @NotNull
     private Integer customerId;
 
 

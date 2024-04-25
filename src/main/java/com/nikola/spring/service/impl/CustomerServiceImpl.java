@@ -2,14 +2,18 @@ package com.nikola.spring.service.impl;
 
 import com.nikola.spring.converter.TempConverter;
 import com.nikola.spring.dto.CustomerDto;
-import com.nikola.spring.entities.CustomerEntity;
+import com.nikola.spring.dto.ShippingAddressDto;
+import com.nikola.spring.dto.UserDto;
+import com.nikola.spring.entities.*;
+import com.nikola.spring.exceptions.DuplicateNotAllowed;
 import com.nikola.spring.exceptions.InstanceUndefinedException;
-import com.nikola.spring.repositories.CustomerRepository;
+import com.nikola.spring.repositories.*;
 import com.nikola.spring.service.CustomerService;
 import com.nikola.spring.utils.RegistrationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,9 +29,45 @@ public class CustomerServiceImpl implements CustomerService {
     private TempConverter tempConverter;
 
     @Autowired private CustomerRepository customerRepository;
+
+    @Autowired private UserRepository userRepository;
+    @Autowired private RoleRepository roleRepository;
+    @Autowired private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired private ShippingAddressRepository shippingAddressRepository;
+    @Autowired private CartRepository cartRepository;
+
     @Override
     public CustomerDto addCustomer(RegistrationForm form) {
-        return null;
+        UserDto user = form.getUser();
+        Optional<UserEntity> userEntityOptional = userRepository.findByEmail(user.getEmail());
+        if(userEntityOptional.isPresent()){
+            throw new DuplicateNotAllowed(new Error("User already exists!"));
+        }
+        RoleEntity roleEntity = roleRepository.findByRole("USER").orElseThrow(()->new InstanceUndefinedException(new Error("Role not found.")));
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        UserEntity userEntity = tempConverter.dtoToEntity(user);
+        userEntity.setRoles(List.of(roleEntity));
+        userEntity.setEnabled((byte) 1);
+        UserEntity storedUser = userRepository.save(userEntity);
+        roleEntity.setUsers(List.of(storedUser));
+        roleRepository.saveAndFlush(roleEntity);
+        ShippingAddressDto shippingAddressDto = form.getShippingAddress();
+        ShippingAddressEntity shippingAddressEntity = tempConverter.dtoToEntity(shippingAddressDto);
+        ShippingAddressEntity storedAddress = shippingAddressRepository.save(shippingAddressEntity);
+        CartEntity cartEntity = new CartEntity();
+        cartEntity.setCartPrice(0.00);
+        CartEntity storedCart = cartRepository.save(cartEntity);
+        CustomerDto customerDto = form.getCustomer();
+        customerDto.setUserId(storedUser.getId());
+        customerDto.setCartId(storedCart.getId());
+        customerDto.setShippingAddressId(storedAddress.getId());
+        CustomerEntity customerEntity = tempConverter.dtoToEntity(customerDto);
+        CustomerEntity storedCustomer = customerRepository.save(customerEntity);
+        storedCart.setCustomer(storedCustomer);
+        cartRepository.saveAndFlush(storedCart);
+        storedAddress.setCustomer(storedCustomer);
+        shippingAddressRepository.saveAndFlush(storedAddress);
+        return tempConverter.entityToDto(storedCustomer);
     }
 
     @Override
@@ -73,17 +113,22 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDto getCurrentCustomer() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentCustomer = authentication.getName();
-        CustomerDto returnValue = null;
-
-        Optional<CustomerEntity> customerEntityOptional = customerRepository.findByUserName(currentCustomer);
-        if(customerEntityOptional.isPresent()){
-            if(customerEntityOptional == null){
-                throw new RuntimeException("Customer not found");
-            }
-            returnValue = tempConverter.entityToDto(customerEntityOptional.get());
-        }
-        return returnValue;
+        return null;
     }
+
+//    @Override
+//    public CustomerDto getCurrentCustomer() {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String currentCustomer = authentication.getName();
+//        CustomerDto returnValue = null;
+//
+//        Optional<CustomerEntity> customerEntityOptional = customerRepository.findByUserName(currentCustomer);
+//        if(customerEntityOptional.isPresent()){
+//            if(customerEntityOptional == null){
+//                throw new RuntimeException("Customer not found");
+//            }
+//            returnValue = tempConverter.entityToDto(customerEntityOptional.get());
+//        }
+//        return returnValue;
+//    }
 }

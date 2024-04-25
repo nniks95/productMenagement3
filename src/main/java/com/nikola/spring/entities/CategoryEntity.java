@@ -12,7 +12,7 @@ import java.util.List;
 @Table(name = "category")
 public class CategoryEntity implements Serializable {
 
-   // @Serial
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id

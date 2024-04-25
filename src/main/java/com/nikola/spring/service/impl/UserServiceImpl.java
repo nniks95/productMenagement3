@@ -8,6 +8,8 @@ import com.nikola.spring.exceptions.InstanceUndefinedException;
 import com.nikola.spring.repositories.UserRepository;
 import com.nikola.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired private UserRepository userRepository;
 
+    @Autowired private AuthenticationManager authenticationManager;
 
     @Override
     public List<UserDto> listAllUsers() {
@@ -53,7 +56,7 @@ public class UserServiceImpl implements UserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUser = authentication.getName();
         UserDto returnValue = null;
-        Optional<UserEntity> userEntityOptional = userRepository.findUserByName(currentUser);
+        Optional<UserEntity> userEntityOptional = userRepository.findByEmail(currentUser);
         if(userEntityOptional.isPresent()){
             if(userEntityOptional == null){
                 throw new RuntimeException("User not found");
@@ -94,5 +97,16 @@ public class UserServiceImpl implements UserService {
             returnValue = tempConverter.entityToDto(userOptional.get());
         }
         return  returnValue;
+    }
+
+    @Override
+    public Optional<Authentication> authenticateUser(String username, String password) {
+        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username,password);
+        Optional<UserEntity> userOptional = userRepository.findByEmail(username);
+        if(userOptional.isPresent()){
+            Authentication auth = authenticationManager.authenticate(authRequest);
+            return Optional.of(auth);
+        }
+        return Optional.empty();
     }
 }

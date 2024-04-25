@@ -7,6 +7,7 @@ import com.nikola.spring.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +37,7 @@ public class ProductControler {
     }
 
     @PutMapping(value = "/updateProduct/{productId}")
+    @PreAuthorize(value = "hasAuthority('ADMIN')")
     public ResponseEntity<ProductDto> updateCategoryDetails(@Validated @RequestBody ProductDto product, Errors errors, @PathVariable("productId") Integer productId){
 
         ProductDto productDto = productsService.updateProductById(productId,product);
@@ -45,6 +47,7 @@ public class ProductControler {
     //pathvariable se koristi kada unutar value imas neku odredjenu vrednost unutar {}
 
     @PostMapping(value = "/saveProduct")
+    @PreAuthorize(value = "hasAuthority('ADMIN')")
     public ResponseEntity<ProductDto> saveProduct(@Validated @RequestBody ProductDto product, Errors errors){
         if(errors.hasErrors()){
             Error error = new Error("Product validation not passed");
@@ -56,6 +59,7 @@ public class ProductControler {
     }
 
     @DeleteMapping(value = "/deleteProduct/{productId}")
+    @PreAuthorize(value = "hasAuthority('ADMIN')")
     public ResponseEntity<String> deleteProduct(@PathVariable("productId")Integer productId){
         productsService.deleteProduct(productId);
         String message = "Product with ID: "+productId+" is deleted.";

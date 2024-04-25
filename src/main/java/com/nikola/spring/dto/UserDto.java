@@ -1,5 +1,6 @@
 package com.nikola.spring.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nikola.spring.entities.RoleEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -28,9 +29,11 @@ public class UserDto implements Serializable {
     private String email;
     @NotEmpty
     @Size(min = 6)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private Short enabled;
     private List<Integer> rolesIds;
+    private String authToken;
 
 
     public Integer getId() {
@@ -87,5 +90,13 @@ public class UserDto implements Serializable {
 
     public void setRolesIds(List<Integer> rolesIds) {
         this.rolesIds = rolesIds;
+    }
+
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
     }
 }

@@ -6,6 +6,7 @@ import com.nikola.spring.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,7 @@ public class CategoryControler {
     }
 
     @PutMapping(value = "/updateCategory/{categoryId}")
+    @PreAuthorize(value = "hasAuthority('ADMIN')")
     public ResponseEntity<CategoryDto> updateCategoryDetails(@Validated @RequestBody CategoryDto category, Errors errors, @PathVariable("categoryId") Integer categoryId){
         if(errors.hasErrors()){
             Error error = new Error("Category validation not passed");
@@ -44,6 +46,7 @@ public class CategoryControler {
     }
 
     @PostMapping(value = "/saveCategory")
+    @PreAuthorize(value = "hasAuthority('ADMIN')")
     public ResponseEntity<CategoryDto> saveCategory(@Validated @RequestBody CategoryDto category, Errors errors){
         if(errors.hasErrors()){
             Error error = new Error("Category validation not passed");
@@ -55,6 +58,7 @@ public class CategoryControler {
     }
 
     @DeleteMapping(value = "/deleteCategory/{categoryId}")
+    @PreAuthorize(value = "hasAuthority('ADMIN')")
     public ResponseEntity<String> deleteCategory(@PathVariable("categoryId")Integer categoryId){
         categoryService.deleteCategory(categoryId);
         String message = "Category with ID :" +categoryId+ " is deleted";

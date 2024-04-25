@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.multipart.MultipartException;
 
+import javax.security.auth.login.CredentialNotFoundException;
+
 @RestControllerAdvice
 public class ErrorControler {
 
@@ -39,6 +41,10 @@ public class ErrorControler {
     public ResponseEntity<String> handleMultipartException(Exception e){
         String message = e.getMessage();
         return new ResponseEntity<>(message,HttpStatus.EXPECTATION_FAILED);
+    }
+    @ExceptionHandler(CredentialNotFoundException.class)
+    public ResponseEntity<String> handleCredentialNotFoundException(Exception e){
+        return new ResponseEntity<>(e.getMessage(),HttpStatus.EXPECTATION_FAILED);
     }
 
 

@@ -33,14 +33,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         String email = null;
         String jwt = null;
         if(authorizationHeader != null && authorizationHeader.startsWith("Bearer ")){
-            jwt = authorizationHeader;
-            System.out.println(jwt);
-        }
-        try{
-            email = jwtUtil.extractUsername(jwt);
-        }catch (Exception e){
-            Error error = new Error("Expired token");
-            System.err.println(error);
+            jwt = authorizationHeader.substring(7);
+            try{
+                email = jwtUtil.extractUsername(jwt);
+
+            }catch (Exception e){
+                Error error = new Error("Expired token");
+                System.err.println(error);
+            }
         }
         if(email != null && SecurityContextHolder.getContext().getAuthentication() == null){
             UserDto user = this.userService.getUserByEmail(email);
