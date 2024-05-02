@@ -68,4 +68,15 @@ public class CustomerEntity implements Serializable {
     public void setCart(CartEntity cart) {
         this.cart = cart;
     }
+
+    @Override
+    public String toString() {
+        return "CustomerEntity{" +
+                "id=" + id +
+                ", customerPhone='" + customerPhone + '\'' +
+                ", shippingAddress=" + shippingAddress +
+                ", user=" + user +
+                ", cart=" + cart +
+                '}';
+    }
 }

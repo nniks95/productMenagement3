@@ -3,7 +3,7 @@ package com.nikola.spring.controler;
 
 import com.nikola.spring.dto.ProductDto;
 import com.nikola.spring.exceptions.DataNotValidatedException;
-import com.nikola.spring.service.ProductsService;
+import com.nikola.spring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ import java.util.List;
 public class ProductControler {
 
     @Autowired
-    private ProductsService productsService;
+    private ProductService productsService;
 
 
     @GetMapping(value = "/allProducts")

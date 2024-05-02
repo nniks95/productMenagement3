@@ -1,6 +1,7 @@
 package com.nikola.spring.service;
 
 import com.nikola.spring.dto.CartDto;
+import com.nikola.spring.dto.CartItemDto;
 
 import java.util.List;
 
@@ -10,11 +11,14 @@ public interface CartService {
 
     CartDto validateCart();
 
-    CartDto refreshCartState(Integer cartId);
+    void refreshCartState(Integer cartId);
 
-    CartDto refreshAllCarts();
+    void refreshAllCarts();
 
     List<CartDto> listAllCarts();
+
+    List<CartItemDto> listAllMyCartItems();
+
 
 
 

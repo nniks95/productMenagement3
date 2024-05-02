@@ -1,10 +1,7 @@
 package com.nikola.spring.controler;
 
 
-import com.nikola.spring.exceptions.DataNotValidatedException;
-import com.nikola.spring.exceptions.DuplicateNotAllowed;
-import com.nikola.spring.exceptions.FileUploadException;
-import com.nikola.spring.exceptions.InstanceUndefinedException;
+import com.nikola.spring.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -44,6 +41,11 @@ public class ErrorControler {
     }
     @ExceptionHandler(CredentialNotFoundException.class)
     public ResponseEntity<String> handleCredentialNotFoundException(Exception e){
+        return new ResponseEntity<>(e.getMessage(),HttpStatus.EXPECTATION_FAILED);
+    }
+
+    @ExceptionHandler(InvalidCartException.class)
+    public ResponseEntity<String> handleInvalidCartException(Exception e){
         return new ResponseEntity<>(e.getMessage(),HttpStatus.EXPECTATION_FAILED);
     }
 

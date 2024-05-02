@@ -2,19 +2,17 @@ package com.nikola.spring.service.impl;
 
 import com.nikola.spring.converter.TempConverter;
 import com.nikola.spring.dto.ProductDto;
-import com.nikola.spring.entities.CategoryEntity;
 import com.nikola.spring.entities.ProductEntity;
-import com.nikola.spring.exceptions.DataNotValidatedException;
 import com.nikola.spring.exceptions.InstanceUndefinedException;
-import com.nikola.spring.repositories.CategoryRepository;
 import com.nikola.spring.repositories.ProductRepository;
+import com.nikola.spring.service.CartItemService;
+import com.nikola.spring.service.CartService;
 import com.nikola.spring.service.CategoryService;
-import com.nikola.spring.service.ProductsService;
+import com.nikola.spring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.naming.InsufficientResourcesException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +20,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class ProductServiceImpl implements ProductsService {
+public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private TempConverter tempConverter;
@@ -30,6 +28,9 @@ public class ProductServiceImpl implements ProductsService {
     private ProductRepository productRepository;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private CartItemService cartItemService;
+    @Autowired private CartService cartService;
 
 
     @Override
@@ -84,8 +85,11 @@ public class ProductServiceImpl implements ProductsService {
     @Override
     public void deleteProduct(Integer productId) {
         ProductDto productDto = getProductById(productId);
+
         productRepository.deleteById(productDto.getId());
+        cartService.refreshAllCarts();
         productRepository.flush();
+
     }
 
     @Override

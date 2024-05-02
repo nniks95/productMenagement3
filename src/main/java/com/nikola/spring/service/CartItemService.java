@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CartItemService {
 
-    CartItemDto addCartItem(CartItemDto cartItem, Integer productId);
+    CartItemDto addCartItem(CartItemDto cartItem);
 
     List<CartItemDto> listAllItemsByCartId(Integer cartId);
 
@@ -15,7 +15,7 @@ public interface CartItemService {
 
     void removeAllByProductId(Integer productId);
 
-    void removeAllByCartId(Integer cartId);
+    void clearMyCart();
 
     CartItemDto getCartItemById(Integer cartItemId);
 

@@ -102,33 +102,22 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDto updateCustomer(CustomerDto customer) {
-        CustomerDto returnValue = getCurrentCustomer();
-        returnValue.setShippingAddressId(customer.getShippingAddressId());
-        returnValue.setCartId(customer.getCartId());
-        returnValue.setCustomerPhone(customer.getCustomerPhone());
+//        CustomerDto returnValue = getCurrentCustomer();
+//        returnValue.setShippingAddressId(customer.getShippingAddressId());
+//        returnValue.setCartId(customer.getCartId());
+//        returnValue.setCustomerPhone(customer.getCustomerPhone());
+//
 
-
-        return returnValue;
+        return null;
     }
 
     @Override
     public CustomerDto getCurrentCustomer() {
-        return null;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentCustomer = authentication.getName();
+        CustomerEntity customer = customerRepository.findByEmail(currentCustomer)
+                .orElseThrow(() -> new InstanceUndefinedException(new Error("Error while trying to find customer by email: " + currentCustomer))); //todo: napravi ObjectNotFoundException(String msg) extendenduje RuntimeException
+        return tempConverter.entityToDto(customer);
     }
 
-//    @Override
-//    public CustomerDto getCurrentCustomer() {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String currentCustomer = authentication.getName();
-//        CustomerDto returnValue = null;
-//
-//        Optional<CustomerEntity> customerEntityOptional = customerRepository.findByUserName(currentCustomer);
-//        if(customerEntityOptional.isPresent()){
-//            if(customerEntityOptional == null){
-//                throw new RuntimeException("Customer not found");
-//            }
-//            returnValue = tempConverter.entityToDto(customerEntityOptional.get());
-//        }
-//        return returnValue;
-//    }
 }

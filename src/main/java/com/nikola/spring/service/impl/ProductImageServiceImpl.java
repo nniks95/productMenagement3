@@ -1,14 +1,13 @@
 package com.nikola.spring.service.impl;
 
 import com.nikola.spring.converter.TempConverter;
-import com.nikola.spring.dto.ProductDto;
 import com.nikola.spring.dto.ProductImageDto;
 import com.nikola.spring.entities.ProductImageEntity;
 import com.nikola.spring.exceptions.FileUploadException;
 import com.nikola.spring.exceptions.InstanceUndefinedException;
 import com.nikola.spring.repositories.ProductImageRepository;
 import com.nikola.spring.service.ProductImageService;
-import com.nikola.spring.service.ProductsService;
+import com.nikola.spring.service.ProductService;
 import com.nikola.spring.utils.FileValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +29,7 @@ public class ProductImageServiceImpl implements ProductImageService {
     @Autowired
     private ProductImageRepository productImageRepository;
     @Autowired
-    private ProductsService productsService;
+    private ProductService productsService;
     @Autowired
     private FileValidator fileValidator;
 

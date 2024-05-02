@@ -1,11 +1,10 @@
 package com.nikola.spring.service;
 
-import com.nikola.spring.dto.CategoryDto;
 import com.nikola.spring.dto.ProductDto;
 
 import java.util.List;
 
-public interface ProductsService {
+public interface ProductService {
 
     ProductDto addProduct(ProductDto productDto);
 

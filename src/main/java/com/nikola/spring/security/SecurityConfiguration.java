@@ -32,6 +32,7 @@ public class SecurityConfiguration {
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling((exception)->exception.authenticationEntryPoint(jwtAuthenticationEntryPoint))
                 .authorizeHttpRequests(authorize->authorize.requestMatchers("/login","/register").anonymous()
+                        .requestMatchers("/api/carts").hasAuthority("USER")
                         .anyRequest().authenticated()
                 ).addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class).build();
     }

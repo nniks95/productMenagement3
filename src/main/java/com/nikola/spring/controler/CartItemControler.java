@@ -21,6 +21,7 @@ public class CartItemControler {
         return new ResponseEntity<>(cartItemService.listAllItemsByCartId(cartId), HttpStatus.OK);
     }
 
+
     @DeleteMapping(value = "/deleteCartItem/{itemId}")
     public ResponseEntity<String> deleteItemById(@PathVariable("itemId") Integer itemId){
         cartItemService.deleteItemById(itemId);
@@ -31,4 +32,17 @@ public class CartItemControler {
     public ResponseEntity<CartItemDto> getCartItemById(@PathVariable("cartItemId") Integer cartItemId){
         return new ResponseEntity<>(cartItemService.getCartItemById(cartItemId),HttpStatus.OK);
     }
+
+    @DeleteMapping(value = "/clearMyCart")
+    public ResponseEntity<String> clearMyCart(){
+        cartItemService.clearMyCart();
+        String message = "Cart is cleared.";
+        return new ResponseEntity<>(message,HttpStatus.OK);
+    }
+
+
+
+
+
+
 }

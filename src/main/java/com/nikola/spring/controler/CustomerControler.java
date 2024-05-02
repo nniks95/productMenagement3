@@ -6,6 +6,7 @@ import com.nikola.spring.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ public class CustomerControler {
     @Autowired private CustomerService customerService;
 
     @GetMapping(value = "/allCustomers")
+    @PreAuthorize(value = "hasAuthority('ADMIN')")
     public ResponseEntity<List<CustomerDto>> getAllCustomers(){
         return new ResponseEntity<>(customerService.listAllCustomers(), HttpStatus.OK);
     }
@@ -28,6 +30,7 @@ public class CustomerControler {
         return new ResponseEntity<>(customerService.getCustomerById(customerId),HttpStatus.OK);
     }
     @DeleteMapping(value = "/deleteCustomer/{customerId}")
+    @PreAuthorize(value = "hasAuthority('ADMIN')")
     public ResponseEntity<String> deleteCustomer(@PathVariable("customerId") Integer customerId){
         customerService.deleteCustomer(customerId);
         String message = "Customer with id: "+customerId+" has been deleted.";
@@ -35,6 +38,7 @@ public class CustomerControler {
     }
 
     @PutMapping(value = "/updateCustomer")
+    @PreAuthorize(value = "hasAuthority('ADMIN')")
     public ResponseEntity<CustomerDto> updateCustomer(@Validated @RequestBody CustomerDto customerDto, Errors errors){
         return new ResponseEntity<>(customerService.updateCustomer(customerDto),HttpStatus.OK);
     }
