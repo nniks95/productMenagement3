@@ -348,7 +348,30 @@ public class TempConverter {
         return returnValue;
     }
 
+    public OrderDto entityToDto(OrderEntity orderEntity){
+        return null;
+    }
+    public OrderEntity dtoToEntity(OrderDto orderDto){
+        return null;
+    }
+    public OrderItemDto entityToDto(OrderItemEntity orderItemEntity){
+        return null;
+    }
+    public OrderItemEntity dtoToEntity(OrderItemDto orderItemDto){
+        return null;
+    }
+    public OrderAddressDto entityToDto(OrderAddressEntity orderAddressEntity){
+        return null;
+    }
+    public OrderAddressEntity dtoToEntity(OrderAddressDto orderAddressDto){
+        return null;
+    }
 
+    public OrderAddressDto shippingAddressToOrderAddress(ShippingAddressDto shippingAddressDto){
+        OrderAddressDto returnValue = mapper.map(shippingAddressDto, OrderAddressDto.class);
+        returnValue.setId(null);
+        return returnValue;
+    }
 
 
 

@@ -11,6 +11,8 @@ public interface CartItemService {
 
     List<CartItemDto> listAllItemsByCartId(Integer cartId);
 
+    List<CartItemDto> listAllItemsByProductId(Integer productId);
+
     void deleteItemById(Integer itemId);
 
     void removeAllByProductId(Integer productId);

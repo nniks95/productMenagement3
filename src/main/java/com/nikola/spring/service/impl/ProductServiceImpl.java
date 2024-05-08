@@ -1,9 +1,11 @@
 package com.nikola.spring.service.impl;
 
 import com.nikola.spring.converter.TempConverter;
+import com.nikola.spring.dto.CartItemDto;
 import com.nikola.spring.dto.ProductDto;
 import com.nikola.spring.entities.ProductEntity;
 import com.nikola.spring.exceptions.InstanceUndefinedException;
+import com.nikola.spring.repositories.CartItemRepository;
 import com.nikola.spring.repositories.ProductRepository;
 import com.nikola.spring.service.CartItemService;
 import com.nikola.spring.service.CartService;
@@ -31,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private CartItemService cartItemService;
     @Autowired private CartService cartService;
+    @Autowired private CartItemRepository cartItemRepository;
 
 
     @Override
@@ -44,10 +47,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDto> listAll() {
-
         List<ProductDto> returnValue = new ArrayList<>();
         List<ProductEntity> allProducts = productRepository.findAll();
-
         for(ProductEntity productEntity:allProducts){
             ProductDto productDto = tempConverter.entityToDto(productEntity);
             returnValue.add(productDto);
@@ -66,30 +67,33 @@ public class ProductServiceImpl implements ProductService {
         }else{
             throw new InstanceUndefinedException(new Error("Product undefined"));
         }
-
         return returnValue;
     }
 
     @Override
     public ProductDto updateProductById(Integer productId, ProductDto productDto) {
         ProductEntity currentProduct = productRepository.findById(productId).orElseThrow(()-> new InstanceUndefinedException(new Error("Product has not been found")));
-
         ProductEntity productEntity = tempConverter.dtoToEntity(productDto);
         productEntity.setCreateTime(currentProduct.getCreateTime());
         productEntity.setId(currentProduct.getId());
         ProductEntity updateProduct = productRepository.saveAndFlush(productEntity);
-
+        List<CartItemDto> allItems = cartItemService.listAllItemsByProductId(productId);
+        System.out.println(allItems.size());
+        for(CartItemDto cartItemDto:allItems){
+            cartItemDto.setPrice(updateProduct.getPrice()*cartItemDto.getQuantity());
+            cartItemRepository.saveAndFlush(tempConverter.dtoToEntity(cartItemDto));
+        }
+        cartService.refreshAllCarts();
         return tempConverter.entityToDto(updateProduct);
     }
 
     @Override
     public void deleteProduct(Integer productId) {
         ProductDto productDto = getProductById(productId);
-
+        cartItemService.removeAllByProductId(productId);
         productRepository.deleteById(productDto.getId());
         cartService.refreshAllCarts();
         productRepository.flush();
-
     }
 
     @Override

@@ -79,7 +79,7 @@ public class CartServiceImpl implements CartService {
         for(CartEntity cart:allCarts){
             returnValue.add(tempConverter.entityToDto(cart));
         }
-        return null;
+        return returnValue;
     }
 
     @Override

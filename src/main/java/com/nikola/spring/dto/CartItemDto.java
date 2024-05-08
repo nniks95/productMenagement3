@@ -59,4 +59,15 @@ public class CartItemDto implements Serializable {
     public void setCart_id(Integer cart_id) {
         this.cart_id = cart_id;
     }
+
+    @Override
+    public String toString() {
+        return "CartItemDto{" +
+                "id=" + id +
+                ", product_id=" + product_id +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", cart_id=" + cart_id +
+                '}';
+    }
 }
