@@ -23,7 +23,7 @@ public class ShippingAddressControler {
     }
 
     @PutMapping(value = "/updateAddressDetails")
-    @PreAuthorize(value = "hasAuthority('ADMIN')")
+    @PreAuthorize(value = "hasAuthority('USER')")
     public ResponseEntity<ShippingAddressDto> updateAddress(@Validated @RequestBody ShippingAddressDto shippingAddressDto, Errors errors){
         return new ResponseEntity<>(shippingAddressService.updateAddress(shippingAddressDto),HttpStatus.OK);
     }

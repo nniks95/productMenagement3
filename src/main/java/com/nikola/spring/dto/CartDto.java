@@ -52,4 +52,14 @@ public class CartDto implements Serializable {
     public void setCartPrice(Double cartPrice) {
         this.cartPrice = cartPrice;
     }
+
+    @Override
+    public String toString() {
+        return "CartDto{" +
+                "id=" + id +
+                ", customerId=" + customerId +
+                ", cartItemsIds=" + cartItemsIds +
+                ", cartPrice=" + cartPrice +
+                '}';
+    }
 }

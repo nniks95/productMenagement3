@@ -13,7 +13,7 @@ public class OrderDto implements Serializable {
 
     private Integer id;
     private Integer cartId;
-    private Double price;
+    private Double orderPrice;
     private String createTime;
     private Integer orderAddressId;
     private List<Integer> orderItemsIds;
@@ -32,14 +32,6 @@ public class OrderDto implements Serializable {
 
     public void setCartId(Integer cartId) {
         this.cartId = cartId;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
     }
 
     public String getCreateTime() {
@@ -64,5 +56,25 @@ public class OrderDto implements Serializable {
 
     public void setOrderItemsIds(List<Integer> orderItemsIds) {
         this.orderItemsIds = orderItemsIds;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderDto{" +
+                "id=" + id +
+                ", cartId=" + cartId +
+                ", orderPrice=" + orderPrice +
+                ", createTime='" + createTime + '\'' +
+                ", orderAddressId=" + orderAddressId +
+                ", orderItemsIds=" + orderItemsIds +
+                '}';
+    }
+
+    public Double getOrderPrice() {
+        return orderPrice;
+    }
+
+    public void setOrderPrice(Double orderPrice) {
+        this.orderPrice = orderPrice;
     }
 }

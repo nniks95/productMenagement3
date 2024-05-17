@@ -38,7 +38,6 @@ public class CustomerControler {
     }
 
     @PutMapping(value = "/updateCustomer")
-    @PreAuthorize(value = "hasAuthority('ADMIN')")
     public ResponseEntity<CustomerDto> updateCustomer(@Validated @RequestBody CustomerDto customerDto, Errors errors){
         return new ResponseEntity<>(customerService.updateCustomer(customerDto),HttpStatus.OK);
     }

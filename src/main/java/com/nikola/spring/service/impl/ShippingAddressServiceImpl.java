@@ -1,6 +1,7 @@
 package com.nikola.spring.service.impl;
 
 import com.nikola.spring.converter.TempConverter;
+import com.nikola.spring.dto.CustomerDto;
 import com.nikola.spring.dto.ShippingAddressDto;
 import com.nikola.spring.dto.UserDto;
 import com.nikola.spring.entities.CustomerEntity;
@@ -10,6 +11,7 @@ import com.nikola.spring.exceptions.InstanceUndefinedException;
 import com.nikola.spring.repositories.CustomerRepository;
 import com.nikola.spring.repositories.ShippingAddressRepository;
 import com.nikola.spring.repositories.UserRepository;
+import com.nikola.spring.service.CustomerService;
 import com.nikola.spring.service.ShippingAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -27,6 +29,7 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
     @Autowired private ShippingAddressRepository shippingAddressRepository;
     @Autowired private UserRepository userRepository;
     @Autowired private CustomerRepository customerRepository;
+    @Autowired private CustomerService customerService;
 
 
 
@@ -44,32 +47,15 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
 
     @Override
     public ShippingAddressDto updateAddress(ShippingAddressDto shippingAddress) {
-        return null;
+        CustomerDto currentCustomer = customerService.getCurrentCustomer();
+        ShippingAddressDto currentAddress = getAddressById(currentCustomer.getShippingAddressId());
+        System.out.println(currentAddress.toString());
+        shippingAddress.setId(currentAddress.getId());
+        shippingAddress.setCustomerId(currentAddress.getCustomerId());
+        ShippingAddressEntity updateAddress = tempConverter.dtoToEntity(shippingAddress);
+        updateAddress = shippingAddressRepository.saveAndFlush(updateAddress);
+        return tempConverter.entityToDto(updateAddress);
     }
 
-//    @Override
-//    public ShippingAddressDto updateAddress(ShippingAddressDto shippingAddress) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String currentUsername = authentication.getName();
-//        ShippingAddressDto returnValue = null;
-//        Optional<CustomerEntity> customerOptional = customerRepository.findByUserName(currentUsername);
-//        if(customerOptional.isPresent()){
-//            if(currentUsername == null){
-//                throw new RuntimeException("User not found");
-//            }
-//
-//            ShippingAddressEntity currentShippingAddress = customerOptional.get().getShippingAddress();
-//            if(currentShippingAddress == null){
-//                throw new RuntimeException("Shipping address not found for the customer");
-//            }
-//            currentShippingAddress.setAddress(shippingAddress.getAddress());
-//            currentShippingAddress.setCity(shippingAddress.getCity());
-//            currentShippingAddress.setCountry(shippingAddress.getCountry());
-//            currentShippingAddress.setPostCode(shippingAddress.getPostCode());
-//            currentShippingAddress.setState(shippingAddress.getState());
-//
-//            returnValue = tempConverter.entityToDto(currentShippingAddress);
-//        }
-//        return returnValue;
-//    }
+
 }

@@ -10,7 +10,8 @@ import org.springframework.web.servlet.DispatcherServlet;
 
 public class WebAppInitializer implements WebApplicationInitializer {
 
-    private static final String TEMP_FOLDER = "C:\\Users\\Niks\\IdeaProjects\\productMenagement3\\src\\main\\resources\\static\\upload\\";
+    //private static final String TEMP_FOLDER = "C:\\Users\\Niks\\IdeaProjects\\productMenagement3\\src\\main\\resources\\static\\upload\\";
+    private static final String TEMP_FOLDER = System.getProperty("java.io.tmpdir");
     private static final int MAX_UPLOAD_SIZE = 5*1024*1024;
     @Override
     public void onStartup(ServletContext container) {

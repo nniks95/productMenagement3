@@ -24,6 +24,8 @@ public class OrderItemEntity implements Serializable {
     private Double productPrice;
     @Column(name = "product_quantity", nullable = false)
     private Integer productQuantity;
+    @Column(nullable = false)
+    private Double price;
 
     public Integer getId() {
         return id;
@@ -63,5 +65,13 @@ public class OrderItemEntity implements Serializable {
 
     public void setProductQuantity(Integer productQuantity) {
         this.productQuantity = productQuantity;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

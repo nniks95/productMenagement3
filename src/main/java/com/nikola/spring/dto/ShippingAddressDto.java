@@ -92,4 +92,17 @@ public class ShippingAddressDto implements Serializable {
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
+
+    @Override
+    public String toString() {
+        return "ShippingAddressDto{" +
+                "id=" + id +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", postCode='" + postCode + '\'' +
+                ", country='" + country + '\'' +
+                ", customerId=" + customerId +
+                '}';
+    }
 }

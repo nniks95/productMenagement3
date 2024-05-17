@@ -49,7 +49,9 @@ public class ProductImageServiceImpl implements ProductImageService {
         productsService.getProductById(productId);
         fileValidator.validateFile(file);
         ProductImageDto image = getImageByProductId(productId);
-        deleteImage(image.getProduct_id());
+        if(image != null){
+            deleteImage(image.getProduct_id());
+        }
         try{
             ProductImageDto productImageDto = new ProductImageDto();
             productImageDto.setProduct_id(productId);

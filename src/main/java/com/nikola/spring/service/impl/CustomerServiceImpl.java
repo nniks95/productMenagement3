@@ -2,6 +2,7 @@ package com.nikola.spring.service.impl;
 
 import com.nikola.spring.converter.TempConverter;
 import com.nikola.spring.dto.CustomerDto;
+import com.nikola.spring.dto.OrderDto;
 import com.nikola.spring.dto.ShippingAddressDto;
 import com.nikola.spring.dto.UserDto;
 import com.nikola.spring.entities.*;
@@ -9,6 +10,7 @@ import com.nikola.spring.exceptions.DuplicateNotAllowed;
 import com.nikola.spring.exceptions.InstanceUndefinedException;
 import com.nikola.spring.repositories.*;
 import com.nikola.spring.service.CustomerService;
+import com.nikola.spring.service.OrderService;
 import com.nikola.spring.utils.RegistrationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -35,6 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired private ShippingAddressRepository shippingAddressRepository;
     @Autowired private CartRepository cartRepository;
+    @Autowired private OrderService orderService;
 
     @Override
     public CustomerDto addCustomer(RegistrationForm form) {
@@ -95,21 +98,16 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void deleteCustomer(Integer customerId) {
         CustomerDto customer = getCustomerById(customerId);
+        List<OrderDto> allOrders = orderService.listAllByCartId(customer.getCartId());
+        for(OrderDto order:allOrders){
+            orderService.deleteOrder(order.getId());
+        }
         customerRepository.deleteById(customer.getId());
         customerRepository.flush();
 
     }
 
-    @Override
-    public CustomerDto updateCustomer(CustomerDto customer) {
-//        CustomerDto returnValue = getCurrentCustomer();
-//        returnValue.setShippingAddressId(customer.getShippingAddressId());
-//        returnValue.setCartId(customer.getCartId());
-//        returnValue.setCustomerPhone(customer.getCustomerPhone());
-//
 
-        return null;
-    }
 
     @Override
     public CustomerDto getCurrentCustomer() {
@@ -118,6 +116,12 @@ public class CustomerServiceImpl implements CustomerService {
         CustomerEntity customer = customerRepository.findByEmail(currentCustomer)
                 .orElseThrow(() -> new InstanceUndefinedException(new Error("Error while trying to find customer by email: " + currentCustomer))); //todo: napravi ObjectNotFoundException(String msg) extendenduje RuntimeException
         return tempConverter.entityToDto(customer);
+    }
+    @Override
+    public CustomerDto updateCustomer(CustomerDto customer) {
+        CustomerDto returnValue = getCurrentCustomer();
+        returnValue.setCustomerPhone(customer.getCustomerPhone());
+        return returnValue;
     }
 
 }

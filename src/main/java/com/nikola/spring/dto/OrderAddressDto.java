@@ -74,4 +74,17 @@ public class OrderAddressDto implements Serializable {
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
+
+    @Override
+    public String toString() {
+        return "OrderAddressDto{" +
+                "id=" + id +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", postCode='" + postCode + '\'' +
+                ", country='" + country + '\'' +
+                ", orderId=" + orderId +
+                '}';
+    }
 }

@@ -39,6 +39,12 @@ public class TempConverter {
     private CartItemRepository cartItemRepository;
     @Autowired
     private ProductImageRepository productImageRepository;
+    @Autowired
+    private OrderAddressRepository orderAddressRepository;
+    @Autowired
+    private OrderItemRepository orderItemRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
     private DecimalFormat decForm = new DecimalFormat("0.00");
 
@@ -306,8 +312,6 @@ public class TempConverter {
         if(customerOptional.isPresent()){
             returnValue.setCustomerId(customerOptional.get().getId());
         }
-
-
         Optional<List<CartItemEntity>> cartItemsOptional = Optional.ofNullable(cartEntity.getCartItems());
         List<Integer> cartItemsIds = new ArrayList<>();
         if(cartItemsOptional.isPresent()){
@@ -322,18 +326,7 @@ public class TempConverter {
         return returnValue;
     }
 
-    public CartItemDto entityToDto(CartItemEntity cartItemEntity){
-        CartItemDto returnValue = mapper.map(cartItemEntity, CartItemDto.class);
-        Optional<CartEntity> cartEntityOptional = Optional.ofNullable(cartItemEntity.getCart());
-        if(cartEntityOptional.isPresent()){
-            returnValue.setCart_id(cartEntityOptional.get().getId());
-        }
-        Optional<ProductEntity> productEntityOptional = Optional.ofNullable(cartItemEntity.getProduct());
-        if(productEntityOptional.isPresent()){
-            returnValue.setProduct_id(productEntityOptional.get().getId());
-        }
-        return returnValue;
-    }
+
     public CartItemEntity dtoToEntity(CartItemDto cartItemDto){
         CartItemEntity returnValue = mapper.map(cartItemDto,CartItemEntity.class);
         Optional<Integer> cartIdOptional = Optional.ofNullable(cartItemDto.getCart_id());
@@ -347,29 +340,145 @@ public class TempConverter {
         }
         return returnValue;
     }
+    public CartItemDto entityToDto(CartItemEntity cartItemEntity){
+        CartItemDto returnValue = mapper.map(cartItemEntity, CartItemDto.class);
+        Optional<CartEntity> cartEntityOptional = Optional.ofNullable(cartItemEntity.getCart());
+        if(cartEntityOptional.isPresent()){
+            returnValue.setCart_id(cartEntityOptional.get().getId());
+        }
+        Optional<ProductEntity> productEntityOptional = Optional.ofNullable(cartItemEntity.getProduct());
+        if(productEntityOptional.isPresent()){
+            returnValue.setProduct_id(productEntityOptional.get().getId());
+        }
+        return returnValue;
+    }
 
     public OrderDto entityToDto(OrderEntity orderEntity){
-        return null;
+        OrderDto returnValue = mapper.map(orderEntity,OrderDto.class);
+        Optional<CartEntity> cartEntityOptional= Optional.ofNullable(orderEntity.getCart());
+        if(cartEntityOptional.isPresent()){
+            returnValue.setCartId(cartEntityOptional.get().getId());
+        }
+        Optional<Timestamp> createTimeOptional = Optional.ofNullable(orderEntity.getCreateTime());
+        if(createTimeOptional.isPresent()){
+            LocalDateTime createTime = createTimeOptional.get().toLocalDateTime();
+            String createTimeStr = createTime.format(dateTimeFormatter);
+            returnValue.setCreateTime(createTimeStr);
+        }
+        Optional<OrderAddressEntity> orderAddressEntityOptional = Optional.ofNullable(orderEntity.getOrderAddress());
+        if(orderAddressEntityOptional.isPresent()){
+            returnValue.setOrderAddressId(orderAddressEntityOptional.get().getId());
+        }
+        Optional <List<OrderItemEntity>> orderItemsOptional = Optional.ofNullable(orderEntity.getOrderItems());
+        List<Integer> orderItemsIds = new ArrayList<>();
+        if(orderItemsOptional.isPresent()){
+            for(OrderItemEntity orderItem : orderItemsOptional.get()){
+                orderItemsIds.add(orderItem.getId());
+            }
+        }
+        returnValue.setOrderItemsIds(orderItemsIds);
+        return returnValue;
     }
+
     public OrderEntity dtoToEntity(OrderDto orderDto){
-        return null;
+        OrderEntity returnValue = mapper.map(orderDto,OrderEntity.class);
+        Optional<Integer> cartIdOptional = Optional.ofNullable(orderDto.getCartId());
+        if(cartIdOptional.isPresent()){
+            CartEntity cart = cartRepository.findById(cartIdOptional.get()).orElse(null);
+            if(cart != null){
+                returnValue.setCart(cart);
+            }
+        }
+        Optional<Integer> orderAddressIdOptional = Optional.ofNullable(orderDto.getOrderAddressId());
+        if(orderAddressIdOptional.isPresent()){
+            OrderAddressEntity orderAddress = orderAddressRepository.findById(orderAddressIdOptional.get()).orElse(null);
+            if(orderAddress != null){
+                returnValue.setOrderAddress(orderAddress);
+            }
+        }
+        Optional<List<Integer>> orderItemsIdsOptional = Optional.ofNullable(orderDto.getOrderItemsIds());
+        List<OrderItemEntity> orderItemEntities = new ArrayList<>();
+        if(orderItemsIdsOptional.isPresent()){
+            for(Integer orderItemId : orderItemsIdsOptional.get()){
+                OrderItemEntity orderItem = orderItemRepository.findById(orderItemId).orElse(null);
+                if(orderItem != null){
+                    orderItemEntities.add(orderItem);
+                }
+            }
+        }
+        returnValue.setOrderItems(orderItemEntities);
+        return returnValue;
     }
     public OrderItemDto entityToDto(OrderItemEntity orderItemEntity){
-        return null;
+        OrderItemDto returnValue = mapper.map(orderItemEntity,OrderItemDto.class);
+        Optional<OrderEntity> orderEntityOptional = Optional.ofNullable(orderItemEntity.getOrder());
+        if(orderEntityOptional.isPresent()){
+            returnValue.setOrderId(orderEntityOptional.get().getId());
+        }
+        return returnValue;
     }
     public OrderItemEntity dtoToEntity(OrderItemDto orderItemDto){
-        return null;
+        OrderItemEntity returnValue = mapper.map(orderItemDto,OrderItemEntity.class);
+        Optional<Integer> orderIdOptional = Optional.ofNullable(orderItemDto.getOrderId());
+        if(orderIdOptional.isPresent()){
+            OrderEntity order = orderRepository.findById(orderIdOptional.get()).orElse(null);
+            if(order != null){
+                returnValue.setOrder(order);
+            }
+        }
+        return returnValue;
     }
+
     public OrderAddressDto entityToDto(OrderAddressEntity orderAddressEntity){
-        return null;
+        OrderAddressDto returnValue = mapper.map(orderAddressEntity,OrderAddressDto.class);
+        Optional<OrderEntity> orderEntityOptional = Optional.ofNullable(orderAddressEntity.getOrderEntity());
+        if(orderEntityOptional.isPresent()){
+            returnValue.setOrderId(orderEntityOptional.get().getId());
+        }
+        return returnValue;
     }
     public OrderAddressEntity dtoToEntity(OrderAddressDto orderAddressDto){
-        return null;
+        OrderAddressEntity returnValue = mapper.map(orderAddressDto,OrderAddressEntity.class);
+        Optional<Integer> orderIdOptional = Optional.ofNullable(orderAddressDto.getOrderId());
+        if(orderIdOptional.isPresent()){
+            OrderEntity order = orderRepository.findById(orderIdOptional.get()).orElse(null);
+            if(order != null){
+                returnValue.setOrderEntity(order);
+            }
+        }
+        return returnValue;
     }
 
     public OrderAddressDto shippingAddressToOrderAddress(ShippingAddressDto shippingAddressDto){
         OrderAddressDto returnValue = mapper.map(shippingAddressDto, OrderAddressDto.class);
+        System.out.println(returnValue.toString());
+
         returnValue.setId(null);
+        System.out.println(returnValue.toString());
+        return returnValue;
+    }
+
+    public OrderItemDto cartItemToOrderItem(CartItemDto cartItemDto){
+        OrderItemDto returnValue = new OrderItemDto();
+        Optional<Integer> productIdOptional = Optional.ofNullable(cartItemDto.getProduct_id());
+        if(productIdOptional.isPresent()){
+            Integer productId = productIdOptional.get();
+            ProductEntity productEntity = productRepository.findById(productId).orElse(null);
+            if(productEntity != null){
+                String productName = productEntity.getBrand()+ " " + productEntity.getModel();
+                Double productPrice = productEntity.getPrice();
+                returnValue.setProductName(productName);
+                returnValue.setProductPrice(productPrice);
+            }
+        }
+        Optional<Integer> quantityOptional = Optional.ofNullable(cartItemDto.getQuantity());
+        if(quantityOptional.isPresent()){
+            Integer quantity = quantityOptional.get();
+            returnValue.setProductQuantity(quantity);
+        }
+
+        Double price = returnValue.getProductPrice()* returnValue.getProductQuantity();
+        returnValue.setPrice(price);
         return returnValue;
     }
 

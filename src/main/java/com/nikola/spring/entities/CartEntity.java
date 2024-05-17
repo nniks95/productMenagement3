@@ -20,7 +20,7 @@ public class CartEntity implements Serializable {
     private Integer id;
     @OneToOne(fetch = FetchType.EAGER,orphanRemoval = true, mappedBy = "cart")
     private CustomerEntity customer;
-    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "cart")
     private List<CartItemEntity> cartItems;
     @Column(name = "cart_price", nullable = false)
     private Double cartPrice;

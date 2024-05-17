@@ -74,4 +74,12 @@ public class OrderEntity implements Serializable {
     public void setOrderAddress(OrderAddressEntity orderAddress) {
         this.orderAddress = orderAddress;
     }
+
+    public List<OrderItemEntity> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItemEntity> orderItems) {
+        this.orderItems = orderItems;
+    }
 }

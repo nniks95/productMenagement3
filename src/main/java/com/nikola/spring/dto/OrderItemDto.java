@@ -14,6 +14,7 @@ public class OrderItemDto implements Serializable {
     private String productName;
     private Double productPrice;
     private Integer productQuantity;
+    private Double price;
 
     public Integer getId() {
         return id;
@@ -53,5 +54,13 @@ public class OrderItemDto implements Serializable {
 
     public void setProductQuantity(Integer productQuantity) {
         this.productQuantity = productQuantity;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

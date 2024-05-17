@@ -45,7 +45,11 @@ public class ErrorControler {
     }
 
     @ExceptionHandler(InvalidCartException.class)
-    public ResponseEntity<String> handleInvalidCartException(Exception e){
+    public ResponseEntity<String> handleInvalidCartException(Error e){
+        return new ResponseEntity<>(e.getMessage(),HttpStatus.EXPECTATION_FAILED);
+    }
+    @ExceptionHandler(SuspendedUserException.class)
+    public ResponseEntity<String> handleSuspendedUserException(Error e){
         return new ResponseEntity<>(e.getMessage(),HttpStatus.EXPECTATION_FAILED);
     }
 

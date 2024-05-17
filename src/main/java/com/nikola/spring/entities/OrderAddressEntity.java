@@ -83,4 +83,17 @@ public class OrderAddressEntity implements Serializable {
     public void setOrderEntity(OrderEntity orderEntity) {
         this.orderEntity = orderEntity;
     }
+
+    @Override
+    public String toString() {
+        return "OrderAddressEntity{" +
+                "id=" + id +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", postCode='" + postCode + '\'' +
+                ", country='" + country + '\'' +
+                ", orderEntity=" + orderEntity +
+                '}';
+    }
 }
