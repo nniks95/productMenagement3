@@ -5,32 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dfc590c-dfb1-4665-949f-d6f818fa40cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/OrderControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/exceptions/SuspendedUserException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/interceptors/UserInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/configuration/SpringMvcConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/configuration/SpringMvcConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/configuration/WebAppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/configuration/WebAppInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/CustomerControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/CustomerControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ErrorControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ErrorControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ShippingAddressControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ShippingAddressControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/UserControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/UserControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/converter/TempConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/converter/TempConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/CartDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/CartDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/OrderAddressDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/OrderAddressDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/OrderDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/OrderItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/OrderItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/ShippingAddressDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/ShippingAddressDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/CartEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/CartEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/OrderAddressEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/OrderAddressEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/MainControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/MainControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ProductControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ProductControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ProductImageControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/controler/ProductImageControler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/OrderEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/OrderEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/OrderItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/OrderItemEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/repositories/OrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/CustomerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/ProductImageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/ProductImageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/ShippingAddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/ShippingAddressServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/ProductEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/entities/ProductEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/interceptors/UserInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/interceptors/UserInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/utils/AuthenticationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/utils/AuthenticationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nikola/spring/utils/LoadData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nikola/spring/utils/LoadData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +41,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -78,7 +67,8 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Niks/IdeaProjects/productMenagement&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">

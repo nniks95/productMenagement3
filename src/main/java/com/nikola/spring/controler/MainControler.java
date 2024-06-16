@@ -1,6 +1,5 @@
 package com.nikola.spring.controler;
 
-
 import com.nikola.spring.converter.TempConverter;
 import com.nikola.spring.dto.UserDto;
 import com.nikola.spring.entities.UserEntity;
@@ -12,14 +11,12 @@ import com.nikola.spring.utils.JwtUtil;
 import com.nikola.spring.utils.RegistrationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.security.auth.login.CredentialNotFoundException;
@@ -32,7 +29,6 @@ public class MainControler {
     @Autowired private TempConverter tempConverter;
     @Autowired private JwtUtil jwtUtil;
     @Autowired private CustomerService customerService;
-
 
     @PostMapping(value = "/login")
     public ResponseEntity <UserDto> userLogin(@RequestBody AuthenticationRequest authenticationRequest) throws CredentialNotFoundException {
@@ -47,6 +43,7 @@ public class MainControler {
         user.setAuthToken(jwt);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
 
     @PostMapping(value = "/register")
     public ResponseEntity<String> registration(@RequestBody @Validated RegistrationForm registrationForm, Errors errors){

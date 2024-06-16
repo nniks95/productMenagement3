@@ -29,12 +29,12 @@ public class LoadData {
         addAdminData();
     }
 
-    public void addAdminData(){
+    public void addAdminData() {
         RoleEntity role = roleRepository.findByRole("ADMIN").orElse(null);
         if(role != null){
             List<RoleEntity> roles = new ArrayList<>();
             roles.add(role);
-            UserEntity userEntity = new UserEntity("Nikola","Nikolic","nikola.nikolic.it@gmail.com", "nikola123",(byte)1);
+            UserEntity userEntity = new UserEntity("Nikola","Nikolic","niks95@gmail.com", "admin",(byte)1);
             userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
             userEntity.setRoles(roles);
 

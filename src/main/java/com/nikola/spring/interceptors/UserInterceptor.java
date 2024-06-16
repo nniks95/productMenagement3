@@ -33,6 +33,4 @@ public class UserInterceptor implements HandlerInterceptor {
         }
         return true;
     }
-
-
 }

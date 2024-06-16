@@ -32,7 +32,4 @@ public class ProductImageControler {
         productImageService.addImage(productId,file);
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
-
-
-
 }

@@ -18,16 +18,13 @@ public class OrderEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name  = "cart_Id", nullable = false)
     private CartEntity cart;
     @Column(name = "order_price", nullable = false)
     private Double orderPrice;
-
     @Column(nullable = false, name = "create_time")
     private Timestamp createTime;
-
     @OneToOne(orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id",nullable = false)
     private OrderAddressEntity orderAddress;

@@ -39,7 +39,10 @@ public class ProductControler {
     @PutMapping(value = "/updateProduct/{productId}")
     @PreAuthorize(value = "hasAuthority('ADMIN')")
     public ResponseEntity<ProductDto> updateCategoryDetails(@Validated @RequestBody ProductDto product, Errors errors, @PathVariable("productId") Integer productId){
-
+        if(errors.hasErrors()){
+            Error error = new Error("Product validation not passed");
+            throw new DataNotValidatedException(error);
+        }
         ProductDto productDto = productsService.updateProductById(productId,product);
         return new ResponseEntity<>(productDto,HttpStatus.OK);
     }

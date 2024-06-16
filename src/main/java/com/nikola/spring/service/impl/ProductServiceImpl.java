@@ -42,7 +42,6 @@ public class ProductServiceImpl implements ProductService {
         ProductEntity productEntity = tempConverter.dtoToEntity(productDto);
         ProductEntity storedProduct = productRepository.save(productEntity);
         return tempConverter.entityToDto(storedProduct);
-
     }
 
     @Override
@@ -53,7 +52,6 @@ public class ProductServiceImpl implements ProductService {
             ProductDto productDto = tempConverter.entityToDto(productEntity);
             returnValue.add(productDto);
         }
-
             return returnValue;
     }
 
@@ -78,7 +76,6 @@ public class ProductServiceImpl implements ProductService {
         productEntity.setId(currentProduct.getId());
         ProductEntity updateProduct = productRepository.saveAndFlush(productEntity);
         List<CartItemDto> allItems = cartItemService.listAllItemsByProductId(productId);
-        System.out.println(allItems.size());
         for(CartItemDto cartItemDto:allItems){
             cartItemDto.setPrice(updateProduct.getPrice()*cartItemDto.getQuantity());
             cartItemRepository.saveAndFlush(tempConverter.dtoToEntity(cartItemDto));
